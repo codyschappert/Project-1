@@ -60,7 +60,8 @@ class Ui_MainWindow(object):
         self.vote_button.setFont(font)
         self.vote_button.setObjectName("vote_button")
         self.error_label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.error_label.setGeometry(QtCore.QRect(170, 430, 151, 31))
+        self.error_label.setEnabled(True)
+        self.error_label.setGeometry(QtCore.QRect(120, 430, 261, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.error_label.setFont(font)
@@ -84,7 +85,7 @@ class Ui_MainWindow(object):
         self.vote_john.setText(_translate("MainWindow", "John"))
         self.vote_jane.setText(_translate("MainWindow", "Jane"))
         self.vote_button.setText(_translate("MainWindow", "CAST VOTE"))
-        self.error_label.setText(_translate("MainWindow", "Already voted"))
+        self.error_label.setText(_translate("MainWindow", "Please enter a numerical ID."))
 
 
 if __name__ == "__main__":
