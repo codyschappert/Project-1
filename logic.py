@@ -1,4 +1,4 @@
-from badidgui import Ui_Dialog
+from badidgui import *
 from votemenugui import *
 from PyQt6.QtWidgets import *
 from alreadyvotederrorgui import *
@@ -10,8 +10,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.vote_button.clicked.connect(lambda: self.submit())
-        self.error_label.setText(' ')
-        self.error = Error()
+        self.bad_id = BadID()
+        self.already_voted = AlreadyVoted()
 
     def submit(self):
         user_id = self.ID_input.text()
@@ -29,20 +29,25 @@ class Logic(QMainWindow, Ui_MainWindow):
             elif id_num in ID_list:
                 raise TypeError("Invalid ID")
         except ValueError:
-            self.error_label.setText('Please enter a valid numerical ID.')
-            self.error.show()
+            self.bad_id.show()
         except TypeError:
-            self.error.show()
-            self.error_label.setText('This ID already has a registered vote.')
+            self.already_voted.show()
             self.ID_input.clear()
 
-class Error(QDialog, Ui_Dialog):
+class BadID(QDialog, Error1):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.retranslateUi(self)
         self.close_error.clicked.connect(lambda: self.close_popup())
 
     def close_popup(self):
-        self.error.hide()
+        self.close()
 
+class AlreadyVoted(QDialog, Ui_Dialog):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.close_error.clicked.connect(lambda: self.close_popup())
+
+    def close_popup(self):
+        self.close()
