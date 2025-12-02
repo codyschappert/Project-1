@@ -15,10 +15,10 @@ class VoteSubmitted(object):
         Dialog.resize(400, 150)
         Dialog.setMinimumSize(QtCore.QSize(400, 150))
         Dialog.setMaximumSize(QtCore.QSize(400, 150))
-        self.close_error = QtWidgets.QPushButton(parent=Dialog)
-        self.close_error.setGeometry(QtCore.QRect(140, 90, 121, 31))
-        self.close_error.setMaximumSize(QtCore.QSize(400, 150))
-        self.close_error.setObjectName("close_error")
+        self.close_button = QtWidgets.QPushButton(parent=Dialog)
+        self.close_button.setGeometry(QtCore.QRect(140, 90, 121, 31))
+        self.close_button.setMaximumSize(QtCore.QSize(400, 150))
+        self.close_button.setObjectName("close")
         self.label = QtWidgets.QLabel(parent=Dialog)
         self.label.setGeometry(QtCore.QRect(0, 20, 401, 51))
         font = QtGui.QFont()
@@ -34,7 +34,7 @@ class VoteSubmitted(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Thank you for voting!"))
-        self.close_error.setText(_translate("Dialog", "CLOSE"))
+        self.close_button.setText(_translate("Dialog", "CLOSE"))
         self.label.setText(_translate("Dialog", "Thank you for voting!"))
 
 

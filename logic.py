@@ -14,28 +14,35 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.vote_button.clicked.connect(lambda: self.submit())
         self.bad_id = BadID()
         self.already_voted = AlreadyVoted()
+        self.no_candidate = NoCandidate()
+        self.voted = VoteSubmitted()
 
     def submit(self):
         user_id = self.ID_input.text()
+        
         if self.vote_john.isChecked():
             vote = 'John'
         elif self.vote_jane.isChecked():
             vote = 'Jane'
         else:
             raise TypeError("No candidate")
+
         try:
             id_num = int(user_id)
             if id_num not in ID_list:
                 ID_list.append(id_num)
             elif id_num in ID_list:
                 raise TypeError("Invalid ID")
+
+            self.voted.show()
         except ValueError:
             self.bad_id.show()
         except TypeError("Invalid ID"):
             self.already_voted.show()
             self.ID_input.clear()
         except TypeError("No candidate"):
-            pass
+            self.no_candidate.show()
+
 class BadID(QDialog, BadID):
     def __init__(self):
         super().__init__()
@@ -58,6 +65,7 @@ class VoteSubmitted(QDialog, VoteSubmitted):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.close_button.clicked.connect(lambda: self.close_popup())
 
     def close_popup(self):
         self.close()
@@ -66,6 +74,7 @@ class NoCandidate(QDialog, NoCandidate):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.close_error.clicked.connect(lambda: self.close_popup())
 
     def close_popup(self):
         self.close()
