@@ -3,7 +3,7 @@ from votemenugui import *
 from votesubmittedgui import *
 from nocandidategui import *
 from PyQt6.QtWidgets import *
-from alreadyvotederrorgui import *
+from alreadyvotederrorgui import Already_Voted
 
 ID_list = []
 
@@ -19,15 +19,14 @@ class Logic(QMainWindow, Ui_MainWindow):
 
     def submit(self):
         user_id = self.ID_input.text()
-        
-        if self.vote_john.isChecked():
-            vote = 'John'
-        elif self.vote_jane.isChecked():
-            vote = 'Jane'
-        else:
-            raise TypeError("No candidate")
-
         try:
+            if self.vote_john.isChecked():
+                vote = 'John'
+            elif self.vote_jane.isChecked():
+                vote = 'Jane'
+            else:
+                raise TypeError("No candidate")
+
             id_num = int(user_id)
             if id_num not in ID_list:
                 ID_list.append(id_num)
@@ -35,11 +34,14 @@ class Logic(QMainWindow, Ui_MainWindow):
                 raise TypeError("Invalid ID")
 
             self.voted.show()
+
         except ValueError:
             self.bad_id.show()
+
         except TypeError("Invalid ID"):
             self.already_voted.show()
             self.ID_input.clear()
+
         except TypeError("No candidate"):
             self.no_candidate.show()
 
@@ -52,7 +54,7 @@ class BadID(QDialog, BadID):
     def close_popup(self):
         self.close()
 
-class AlreadyVoted(QDialog, AlreadyVoted):
+class AlreadyVoted(QDialog, Already_Voted):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
