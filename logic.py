@@ -25,24 +25,24 @@ class Logic(QMainWindow, Ui_MainWindow):
             elif self.vote_jane.isChecked():
                 vote = 'Jane'
             else:
-                raise TypeError("No candidate")
+                raise KeyError
 
             id_num = int(user_id)
             if id_num not in ID_list:
                 ID_list.append(id_num)
             elif id_num in ID_list:
-                raise TypeError("Invalid ID")
+                raise TypeError
 
             self.voted.show()
 
         except ValueError:
             self.bad_id.show()
 
-        except TypeError("Invalid ID"):
+        except TypeError:
             self.already_voted.show()
             self.ID_input.clear()
 
-        except TypeError("No candidate"):
+        except KeyError:
             self.no_candidate.show()
 
 class BadID(QDialog, BadID):
