@@ -1,7 +1,6 @@
+from errorwindowgui import Ui_Dialog
 from votemenugui import *
-from errorwindowgui import *
 from PyQt6.QtWidgets import *
-
 
 ID_list = []
 
@@ -11,6 +10,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.vote_button.clicked.connect(lambda: self.submit())
         self.error_label.setText(' ')
+        self.error = Error()
 
     def submit(self):
         user_id = self.ID_input.text()
@@ -28,9 +28,18 @@ class Logic(QMainWindow, Ui_MainWindow):
             elif id_num in ID_list:
                 raise TypeError("Invalid ID")
         except ValueError:
+            self.error.show()
             self.error_label.setText('Please enter a valid numerical ID.')
         except TypeError:
+            self.error.show()
             self.error_label.setText('This ID already has a registered vote.')
             self.ID_input.clear()
+
+class Error(QDialog, Ui_Dialog):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.retranslateUi(self)
+
 
 

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="error">
+    <file>error.png</file>
+    <file>istockphoto-513117114-1024x1024.jpg</file>
+  </qresource>
+</RCC>

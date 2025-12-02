@@ -9,29 +9,44 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Error_Window(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(500, 200)
-        MainWindow.setMinimumSize(QtCore.QSize(500, 200))
-        MainWindow.setMaximumSize(QtCore.QSize(500, 200))
-        self.Error = QtWidgets.QWidget(parent=MainWindow)
-        self.Error.setObjectName("Error")
-        MainWindow.setCentralWidget(self.Error)
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.setEnabled(True)
+        Dialog.resize(400, 150)
+        Dialog.setMinimumSize(QtCore.QSize(400, 150))
+        Dialog.setMaximumSize(QtCore.QSize(400, 150))
+        Dialog.setMouseTracking(True)
+        Dialog.setWindowOpacity(1.0)
+        Dialog.setSizeGripEnabled(False)
+        self.close_error = QtWidgets.QPushButton(parent=Dialog)
+        self.close_error.setGeometry(QtCore.QRect(130, 90, 131, 31))
+        self.close_error.setMaximumSize(QtCore.QSize(400, 150))
+        self.close_error.setObjectName("close_error")
+        self.label = QtWidgets.QLabel(parent=Dialog)
+        self.label.setGeometry(QtCore.QRect(50, 20, 281, 51))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color: rgb(255, 0, 0)")
+        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label.setObjectName("label")
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        Dialog.setWindowTitle(_translate("Dialog", "An error has occured"))
+        self.close_error.setText(_translate("Dialog", "OK"))
+        self.label.setText(_translate("Dialog", "Please enter a numerical ID number."))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Error_Window()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Dialog()
+    ui.setupUi(Dialog)
+    Dialog.show()
     sys.exit(app.exec())
