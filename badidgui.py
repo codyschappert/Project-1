@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'error.ui'
+# Form implementation generated from reading ui file 'bad_id.ui'
 #
 # Created by: PyQt6 UI code generator 6.10.0
 #
