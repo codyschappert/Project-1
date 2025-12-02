@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'vote_submitted.ui'
+# Form implementation generated from reading ui file 'no_candidate.ui'
 #
 # Created by: PyQt6 UI code generator 6.10.0
 #
@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class VoteSubmitted(object):
+class NoCandidate(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 150)
@@ -24,7 +24,7 @@ class VoteSubmitted(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label.setFont(font)
-        self.label.setStyleSheet("color: rgb(0, 200, 0)")
+        self.label.setStyleSheet("color: rgb(255, 0, 0)")
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
 
@@ -33,9 +33,9 @@ class VoteSubmitted(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Thank you for voting!"))
-        self.close_error.setText(_translate("Dialog", "CLOSE"))
-        self.label.setText(_translate("Dialog", "Thank you for voting!"))
+        Dialog.setWindowTitle(_translate("Dialog", "An error has occured"))
+        self.close_error.setText(_translate("Dialog", "OK"))
+        self.label.setText(_translate("Dialog", "Please select a candidate."))
 
 
 if __name__ == "__main__":

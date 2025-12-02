@@ -9,18 +9,18 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
+class AlreadyVoted(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 150)
         Dialog.setMinimumSize(QtCore.QSize(400, 150))
         Dialog.setMaximumSize(QtCore.QSize(400, 150))
         self.close_error = QtWidgets.QPushButton(parent=Dialog)
-        self.close_error.setGeometry(QtCore.QRect(130, 90, 131, 31))
+        self.close_error.setGeometry(QtCore.QRect(140, 90, 121, 31))
         self.close_error.setMaximumSize(QtCore.QSize(400, 150))
         self.close_error.setObjectName("close_error")
         self.label = QtWidgets.QLabel(parent=Dialog)
-        self.label.setGeometry(QtCore.QRect(50, 20, 281, 51))
+        self.label.setGeometry(QtCore.QRect(0, 20, 401, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label.setFont(font)
