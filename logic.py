@@ -1,4 +1,5 @@
 from votemenugui import *
+from errorwindowgui import *
 from PyQt6.QtWidgets import *
 
 
@@ -13,8 +14,10 @@ class Logic(QMainWindow, Ui_MainWindow):
 
     def submit(self):
         user_id = self.ID_input.text()
-        self.confirm_id(user_id)
-        print(ID_list)
+        if self.confirm_id(user_id):
+            print(ID_list)
+        elif not self.confirm_id(user_id):
+            pass
 
     def confirm_id(self, id_num) -> bool | None:
         try:
@@ -28,6 +31,6 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.error_label.setText('Please enter a valid numerical ID.')
         except TypeError:
             self.error_label.setText('This ID already has a registered vote.')
-
+            self.ID_input.clear()
 
 
