@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class NoCandidate(object):
+class Ui_NoCandidate(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 150)

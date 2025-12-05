@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Already_Voted(object):
+class Ui_AlreadyVoted(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 150)

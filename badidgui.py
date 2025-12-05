@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class BadID(object):
+class Ui_BadID(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.setEnabled(True)
